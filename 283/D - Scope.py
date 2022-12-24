@@ -1,18 +1,18 @@
 s=input()
+u=set()
 b=[set()]
 for i in s:
     if i=="(":
         b.append(set())
-        continue
-    if i==")":
-        b.pop(-1)
-        continue
-    for j in b:
-        if i in j:
+    elif i==")":
+        u.difference_update(b[-1])       
+        b.pop()
+    else:
+        if i in u:
             print("No")
             exit()
-    else:
-        b[-1].add(i)
-        continue
+        else:
+            u.add(i)
+            b[-1].add(i)
 else:
     print("Yes")
