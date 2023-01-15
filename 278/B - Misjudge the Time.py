@@ -1,6 +1,4 @@
 h,m=map(int,input().split())
-dh=int(h//10*10+m//10)
-dm=int(h%10*10+m%10)
 while True:
     dh=int(h//10*10+m//10)
     dm=int(h%10*10+m%10)
@@ -10,7 +8,5 @@ while True:
     else:
         m+=1
         if m==60:
-            m=0
-            h+=1
-            if h==24:
-                h=0
+            m=0; h+=1
+            if h==24: h=0

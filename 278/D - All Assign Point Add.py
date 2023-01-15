@@ -1,11 +1,15 @@
 n=int(input())
-a=[int(_) for _ in input().split()]
+a=list(map(int,input().split()))
 q=int(input())
+qu=[list(map(int,input().split())) for i in range(q)]
 for i in range(q):
-    qu=[int(_) for _ in input().split()]
-    if qu[0]==1:
-        a=[qu[1]]*n
-    if qu[0]==2:
-        a[qu[1]-1]+=qu[2]
-    if qu[0]==3:
-        print(a[qu[1]-1])
+    if qu[i][0]==3:
+        add=0
+        for j in reversed(range(i+1)):
+            if qu[j][0]==2 and qu[j][1]==qu[i][1]: add+=qu[j][2]
+            if j==0:
+                print(a[qu[i][1]-1]+add)
+                break
+            elif qu[j][0]==1:
+                print(qu[j][1]+add)
+                break
